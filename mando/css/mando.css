@@ -1,0 +1,462 @@
+/* ================================================
+   MANDO.CSS — Interfaz del mando (móvil)
+   Estilo limpio, táctil, sin dependencias externas
+   ================================================ */
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html, body {
+  min-height: 100dvh;
+  background: #0f0f1a;
+  color: #f0f0f0;
+  font-family: Arial, sans-serif;
+  -webkit-tap-highlight-color: transparent;
+  overscroll-behavior: none;
+}
+
+/* ── PANTALLAS ───────────────────────────────── */
+.pantalla {
+  display: none;
+  min-height: 100dvh;
+  flex-direction: column;
+  padding: 24px 20px;
+  gap: 20px;
+}
+.pantalla.activa {
+  display: flex;
+}
+.oculto {
+  display: none !important;
+}
+
+/* ── PANTALLA PERMISOS ───────────────────────── */
+#pantalla-permisos {
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  gap: 24px;
+}
+
+#pantalla-permisos h1 {
+  font-size: 1.8rem;
+  color: #fff;
+}
+#pantalla-permisos p {
+  font-size: 0.95rem;
+  color: #aaa;
+  max-width: 320px;
+}
+
+.lista-permisos {
+  width: 100%;
+  max-width: 340px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.permiso {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: #1a1a2e;
+  border: 1px solid #333;
+  border-radius: 6px;
+  padding: 12px 16px;
+  font-size: 0.9rem;
+}
+
+.estado {
+  font-size: 0.75rem;
+  padding: 3px 10px;
+  border-radius: 20px;
+  font-weight: bold;
+}
+.estado.pendiente  { background: rgba(255,193,7,0.2);  color: #ffc107; }
+.estado.concedido  { background: rgba(76,175,80,0.2);  color: #4caf50; }
+.estado.denegado   { background: rgba(244,67,54,0.2);  color: #f44336; }
+
+/* ── BOTÓN PRINCIPAL ─────────────────────────── */
+button {
+  cursor: pointer;
+  font-family: Arial, sans-serif;
+  border: none;
+  border-radius: 8px;
+  touch-action: manipulation;
+}
+
+#btn-permisos {
+  width: 100%;
+  max-width: 340px;
+  padding: 16px;
+  background: #4a90d9;
+  color: white;
+  font-size: 1rem;
+  font-weight: bold;
+  border-radius: 8px;
+  transition: background 0.2s;
+}
+#btn-permisos:active {
+  background: #357abd;
+}
+
+/* ── CABECERA ────────────────────────────────── */
+.cabecera {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: #1a1a2e;
+  border-radius: 8px;
+  padding: 10px 14px;
+  font-size: 0.85rem;
+}
+
+.badge {
+  font-size: 0.75rem;
+  padding: 3px 10px;
+  border-radius: 20px;
+  font-weight: bold;
+}
+.badge.verde { background: rgba(76,175,80,0.2);  color: #4caf50; }
+.badge.rojo  { background: rgba(244,67,54,0.2);  color: #f44336; }
+
+#info-slide {
+  color: #aaa;
+  font-size: 0.85rem;
+}
+#timer {
+  color: #4a90d9;
+  font-weight: bold;
+  font-size: 1rem;
+  font-variant-numeric: tabular-nums;
+}
+
+/* ── INCLINACIÓN ─────────────────────────────── */
+.inclinacion {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.label-inclinacion {
+  font-size: 0.75rem;
+  color: #888;
+  white-space: nowrap;
+}
+.barra-inclinacion {
+  flex: 1;
+  height: 6px;
+  background: #2a2a3e;
+  border-radius: 3px;
+  position: relative;
+}
+#cursor-inclinacion {
+  position: absolute;
+  top: -5px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  background: #4a90d9;
+  transition: left 0.1s linear;
+}
+
+.hint {
+  font-size: 0.8rem;
+  color: #666;
+  text-align: center;
+}
+
+/* ── NAVEGACIÓN ──────────────────────────────── */
+.nav-botones {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.btn-nav {
+  flex: 1;
+  padding: 18px 0;
+  background: #1a1a2e;
+  border: 1px solid #333;
+  color: #ddd;
+  font-size: 0.9rem;
+  border-radius: 8px;
+  transition: background 0.15s;
+}
+.btn-nav:active {
+  background: #2a2a4e;
+}
+
+.nav-central {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  min-width: 60px;
+}
+#num-slide {
+  font-size: 2rem;
+  font-weight: bold;
+  color: #fff;
+  line-height: 1;
+}
+#total-slide {
+  font-size: 0.85rem;
+  color: #888;
+}
+
+/* ── FUNCIONES ───────────────────────────────── */
+.funciones {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 10px;
+}
+
+.btn-funcion {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+  padding: 16px 8px;
+  background: #1a1a2e;
+  border: 2px solid #333;
+  color: #ddd;
+  border-radius: 8px;
+  font-size: 0.8rem;
+  transition: all 0.15s;
+}
+.btn-funcion span:first-child {
+  font-size: 1.5rem;
+}
+.btn-funcion:active {
+  background: #2a2a4e;
+}
+.btn-funcion.activo {
+  border-color: #4a90d9;
+  background: rgba(74, 144, 217, 0.1);
+}
+#btn-blackout.activo {
+  border-color: #ffc107;
+  background: rgba(255, 193, 7, 0.1);
+}
+#btn-voz.escuchando {
+  border-color: #4caf50;
+  background: rgba(76, 175, 80, 0.1);
+}
+
+.funcion-estado {
+  font-size: 0.7rem;
+  color: #888;
+}
+
+/* ── ÁREA PUNTERO ────────────────────────────── */
+#zona-puntero {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+/* Selector de modo: Giroscopio / Táctil */
+.modo-puntero {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 8px;
+}
+
+.btn-modo {
+  padding: 10px;
+  background: #1a1a2e;
+  border: 1px solid #333;
+  border-radius: 6px;
+  color: #888;
+  font-size: 0.82rem;
+  cursor: pointer;
+  transition: all 0.15s;
+  touch-action: manipulation;
+}
+.btn-modo.activo {
+  border-color: #4a90d9;
+  color: #4a90d9;
+  background: rgba(74, 144, 217, 0.1);
+}
+.btn-modo:active {
+  background: #2a2a4e;
+}
+
+#area-puntero {
+  height: 130px;
+  background: #1a1a2e;
+  border: 1px dashed #4a90d9;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #666;
+  font-size: 0.85rem;
+  cursor: crosshair;
+  touch-action: none;
+}
+
+/* ── POPUP VOZ ───────────────────────────────── */
+#popup-voz {
+  background: #1a1a2e;
+  border: 1px solid #4caf50;
+  border-radius: 8px;
+  padding: 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.escuchando {
+  font-size: 0.85rem;
+  color: #4caf50;
+}
+
+#transcripcion {
+  font-size: 0.95rem;
+  color: #ddd;
+  font-style: italic;
+  min-height: 22px;
+}
+
+.comandos-hint {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+.comandos-hint span {
+  background: #2a2a3e;
+  border-radius: 4px;
+  padding: 3px 8px;
+  font-size: 0.72rem;
+  color: #888;
+}
+
+/* ── PANEL VIBRACIÓN ─────────────────────────── */
+.panel-vibracion {
+  background: #1a1a2e;
+  border: 1px solid #333;
+  border-left: 3px solid #4a90d9;
+  border-radius: 6px;
+  padding: 14px 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+.panel-titulo {
+  font-size: 0.85rem;
+  color: #ddd;
+  font-weight: bold;
+}
+.panel-vibracion-fila {
+  display: flex;
+  gap: 8px;
+}
+.panel-vibracion-fila input {
+  flex: 1;
+  padding: 8px 10px;
+  background: #0f0f1a;
+  border: 1px solid #333;
+  border-radius: 6px;
+  color: #ddd;
+  font-size: 0.85rem;
+  font-family: Arial, sans-serif;
+}
+.panel-vibracion-fila input:focus {
+  outline: none;
+  border-color: #4a90d9;
+}
+.panel-vibracion-fila button {
+  padding: 8px 14px;
+  background: #4a90d9;
+  color: white;
+  border-radius: 6px;
+  font-size: 0.82rem;
+  font-weight: bold;
+  white-space: nowrap;
+}
+.panel-vibracion-fila button:active {
+  background: #357abd;
+}
+
+/* ── SALIR ───────────────────────────────────── */
+#btn-salir {
+  margin-top: auto;
+  padding: 14px;
+  background: transparent;
+  border: 1px solid rgba(244, 67, 54, 0.4);
+  color: rgba(244, 67, 54, 0.7);
+  font-size: 0.85rem;
+  border-radius: 8px;
+  width: 100%;
+  transition: all 0.2s;
+}
+#btn-salir:active {
+  background: rgba(244, 67, 54, 0.1);
+  border-color: #f44336;
+  color: #f44336;
+}
+
+/* ── TOAST ───────────────────────────────────── */
+#toast {
+  position: fixed;
+  bottom: 70px;
+  left: 50%;
+  transform: translateX(-50%) translateY(10px);
+  background: #2a2a3e;
+  border: 1px solid #444;
+  color: #ddd;
+  font-size: 0.85rem;
+  padding: 9px 20px;
+  border-radius: 20px;
+  white-space: nowrap;
+  opacity: 0;
+  transition: all 0.3s;
+  pointer-events: none;
+  z-index: 9999;
+}
+#toast.visible {
+  opacity: 1;
+  transform: translateX(-50%) translateY(0);
+}
+
+/* Ajuste para 4 botones y contenedor de cámara grande */
+.funciones {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 8px;
+}
+
+#contenedor-camara {
+  width: 100%; 
+  margin-top: 15px;
+  background: #000;
+  border: 3px solid #4caf50;
+  border-radius: 15px;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+}
+
+#video-mando {
+  width: 100%;
+  height: auto;
+  transform: scaleX(-1); /* Efecto espejo */
+  display: block;
+}
+
+#btn-camara.activo {
+  border-color: #4caf50;
+  background: rgba(76, 175, 80, 0.1);
+}
+
+/* Feedback visual: si la cámara está activa, bajamos opacidad a la inclinación */
+body.camara-on .inclinacion {
+  opacity: 0.2;
+  pointer-events: none;
+}

@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Presentación TFG</title>
+  <link rel="stylesheet" href="css/presentacion.css" />
+</head>
+<body>
+
+  <!-- OVERLAY BLACKOUT -->
+  <div id="blackout-overlay"></div>
+
+  <!-- PUNTERO LÁSER -->
+  <div id="puntero-laser"></div>
+
+  <!-- HUD superior -->
+  <div id="hud">
+    <span id="hud-slide">1 / —</span>
+    <span id="hud-timer">00:00</span>
+    <span id="hud-conexion" class="dot rojo"></span>
+  </div>
+
+  <!-- Notificación de comando de voz -->
+  <div id="notif-voz"></div>
+
+  <!-- PANTALLA INICIO -->
+  <div id="pantalla-inicio">
+    <h1>Sistema Interactivo Ubicuo</h1>
+    <p>Defensa de TFG controlada por gestos, movimiento y voz</p>
+    <p class="espera">Esperando conexión del mando...</p>
+    <div class="puntos"><span></span><span></span><span></span></div>
+  </div>
+
+  <!-- CONTENEDOR DE DIAPOSITIVAS -->
+  <div id="slides-container">
+
+    <!-- Diapositiva 0: Portada -->
+    <div class="slide" data-index="0">
+      <div class="slide-contenido centrado">
+        <p class="etiqueta">TFG · Grupo 82 · UC3M</p>
+        <h1>Control de Presentación<br>mediante Gestos y Voz</h1>
+        <p class="autores">Rodrigo Mohedano · Ignacio Sánchez · Alfonso Oliva</p>
+        <p class="subtitulo">Sistemas Interactivos y Ubicuos — 2024/25</p>
+      </div>
+    </div>
+
+    <!-- Diapositiva 1: Índice -->
+    <div class="slide" data-index="1">
+      <div class="slide-contenido">
+        <h2>Índice</h2>
+        <ol class="lista-indice">
+          <li>Contexto y problema</li>
+          <li>Solución propuesta</li>
+          <li>Arquitectura del sistema</li>
+          <li>Interacciones implementadas</li>
+          <li>Demostración en vivo</li>
+          <li>Conclusiones</li>
+        </ol>
+      </div>
+    </div>
+
+    <!-- Diapositiva 2: Problema -->
+    <div class="slide" data-index="2">
+      <div class="slide-contenido dos-columnas">
+        <div>
+          <h2>Contexto y Problema</h2>
+          <p>Un estudiante con movilidad reducida debe interrumpir su exposición para acercarse al ordenador y cambiar de diapositiva.</p>
+          <ul class="lista">
+            <li>Ruptura del contacto visual con el tribunal</li>
+            <li>Esfuerzo físico repetitivo</li>
+            <li>Pérdida de ritmo en la presentación</li>
+            <li>Carga cognitiva adicional</li>
+          </ul>
+        </div>
+        <div class="caja-destacada">
+          <p class="caja-titulo">Pain Point principal</p>
+          <p>Desplazamiento físico al teclado en cada cambio de diapositiva</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Diapositiva 3: Solución -->
+    <div class="slide" data-index="3">
+      <div class="slide-contenido">
+        <h2>Solución Propuesta</h2>
+        <div class="grid-4">
+          <div class="tarjeta">
+            <p class="icono">↔</p>
+            <h3>Navegación</h3>
+            <p>Inclinar el móvil izquierda o derecha para cambiar de diapositiva</p>
+          </div>
+          <div class="tarjeta">
+            <p class="icono">●</p>
+            <h3>Puntero</h3>
+            <p>Giroscopio del móvil controla un punto rojo en pantalla</p>
+          </div>
+          <div class="tarjeta">
+            <p class="icono">■</p>
+            <h3>Blackout</h3>
+            <p>Tapar el sensor de proximidad oscurece la pantalla</p>
+          </div>
+          <div class="tarjeta">
+            <p class="icono">🎤</p>
+            <h3>Voz</h3>
+            <p>Comandos: "siguiente", "anterior", "salir", "portada"...</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Diapositiva 4: Arquitectura -->
+    <div class="slide" data-index="4">
+      <div class="slide-contenido">
+        <h2>Arquitectura del Sistema</h2>
+        <div class="arquitectura">
+          <div class="nodo">
+            <p class="nodo-icono">📱</p>
+            <p class="nodo-nombre">Mando (Móvil)</p>
+            <p class="nodo-tech">DeviceMotion · Proximity · SpeechAPI</p>
+          </div>
+          <div class="flecha">Socket.IO</div>
+          <div class="nodo nodo-central">
+            <p class="nodo-icono">⚙</p>
+            <p class="nodo-nombre">Servidor</p>
+            <p class="nodo-tech">Node.js · Express · Socket.IO</p>
+          </div>
+          <div class="flecha">Socket.IO</div>
+          <div class="nodo">
+            <p class="nodo-icono">🖥</p>
+            <p class="nodo-nombre">Proyector</p>
+            <p class="nodo-tech">Web App · HTML5</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Diapositiva 5: Interacciones -->
+    <div class="slide" data-index="5">
+      <div class="slide-contenido">
+        <h2>Interacciones Implementadas</h2>
+        <table class="tabla-interacciones">
+          <thead>
+            <tr><th>Gesto / Sensor</th><th>Acción</th><th>API usada</th></tr>
+          </thead>
+          <tbody>
+            <tr><td>Inclinar móvil a la derecha</td><td>Siguiente diapositiva</td><td>DeviceOrientationEvent</td></tr>
+            <tr><td>Inclinar móvil a la izquierda</td><td>Diapositiva anterior</td><td>DeviceOrientationEvent</td></tr>
+            <tr><td>Tapar sensor de proximidad</td><td>Pantalla negra (Blackout)</td><td>DeviceProximityEvent</td></tr>
+            <tr><td>Mover móvil con puntero activo</td><td>Puntero láser en pantalla</td><td>DeviceOrientationEvent</td></tr>
+            <tr><td>"siguiente" / "anterior"</td><td>Navegar diapositiva</td><td>Web Speech API</td></tr>
+            <tr><td>"salir" / "portada"</td><td>Cerrar o ir al inicio</td><td>Web Speech API</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <!-- Diapositiva 6: Conclusiones -->
+    <div class="slide" data-index="6">
+      <div class="slide-contenido">
+        <h2>Conclusiones</h2>
+        <p>Hemos transformado una barrera de accesibilidad en un sistema ubicuo que permite al ponente mantener el control total desde cualquier punto del aula.</p>
+        <ul class="lista">
+          <li>Sistema distribuido en tiempo real con Socket.IO</li>
+          <li>Interacciones naturales: gestos, movimiento y voz</li>
+          <li>Diseño centrado en la accesibilidad</li>
+          <li>Validado mediante sesiones de bodystorming</li>
+        </ul>
+        <div class="caja-siguiente">
+          <strong>Próximos pasos (P3):</strong> Validación con usuarios reales en un entorno de defensa simulada.
+        </div>
+      </div>
+    </div>
+
+    <!-- Diapositiva 7: Fin -->
+    <div class="slide" data-index="7">
+      <div class="slide-contenido centrado">
+        <h1 class="gracias">Gracias</h1>
+        <p class="subtitulo">¿Preguntas?</p>
+        <p class="autores">Grupo 82 · Sistemas Interactivos y Ubicuos · UC3M</p>
+      </div>
+    </div>
+
+  </div>
+
+  <script src="/socket.io/socket.io.js"></script>
+  <script src="js/presentacion.js"></script>
+</body>
+</html>

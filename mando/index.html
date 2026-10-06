@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+  <title>Mando TFG</title>
+  <link rel="stylesheet" href="css/mando.css" />
+</head>
+<body>
+
+  <div id="pantalla-permisos" class="pantalla activa">
+    <h1>Mando TFG</h1>
+    <p>Necesitamos acceso a los sensores del dispositivo para usar el mando.</p>
+
+    <div class="lista-permisos">
+      <div class="permiso">
+        <span>📱 Movimiento y orientación</span>
+        <span class="estado pendiente" id="perm-movimiento">Pendiente</span>
+      </div>
+      <div class="permiso">
+        <span>🎤 Micrófono (comandos de voz)</span>
+        <span class="estado pendiente" id="perm-microfono">Pendiente</span>
+      </div>
+      <div class="permiso">
+        <span>🖐 Sensor de proximidad</span>
+        <span class="estado pendiente" id="perm-proximidad">Opcional</span>
+      </div>
+    </div>
+
+    <button id="btn-permisos">Solicitar permisos y conectar</button>
+  </div>
+
+  <div id="pantalla-mando" class="pantalla">
+
+    <div class="cabecera">
+      <span id="estado-conexion" class="badge rojo">Sin conexión</span>
+      <span id="info-slide">— / —</span>
+      <span id="timer">00:00</span>
+    </div>
+
+    <div class="inclinacion">
+      <span class="label-inclinacion">← Anterior</span>
+      <div class="barra-inclinacion">
+        <div id="cursor-inclinacion"></div>
+      </div>
+      <span class="label-inclinacion">Siguiente →</span>
+    </div>
+    <p class="hint">Inclina el móvil para navegar</p>
+
+    <div class="nav-botones">
+      <button class="btn-nav" id="btn-anterior">◀ Anterior</button>
+      <div class="nav-central">
+        <span id="num-slide">1</span>
+        <span id="total-slide">/ —</span>
+      </div>
+      <button class="btn-nav" id="btn-siguiente">Siguiente ▶</button>
+    </div>
+
+    <div class="funciones">
+      <button class="btn-funcion" id="btn-blackout">
+        <span>⬛</span>
+        <span>Blackout</span>
+        <span class="funcion-estado" id="estado-blackout">OFF</span>
+      </button>
+      <button class="btn-funcion" id="btn-puntero">
+        <span>🔴</span>
+        <span>Puntero</span>
+        <span class="funcion-estado" id="estado-puntero">OFF</span>
+      </button>
+      <button class="btn-funcion" id="btn-voz">
+        <span id="icono-voz">🎤</span>
+        <span>Voz</span>
+        <span class="funcion-estado" id="estado-voz">OFF</span>
+      </button>
+      <button class="btn-funcion" id="btn-camara">
+        <span>📷</span>
+        <span>Cámara</span>
+        <span class="funcion-estado" id="estado-camara">OFF</span>
+      </button>
+    </div>
+
+    <div id="contenedor-camara" class="oculto">
+      <video id="video-mando" autoplay playsinline></video>
+      <p class="hint">Muestra la mano abierta para pasar de slide</p>
+    </div>
+
+    <div id="zona-puntero" class="oculto">
+      <div class="modo-puntero">
+        <button class="btn-modo activo" id="btn-modo-giro">🔄 Giroscopio</button>
+        <button class="btn-modo" id="btn-modo-tactil">👆 Táctil</button>
+      </div>
+      <p class="hint" id="hint-puntero">Mueve el móvil para apuntar en pantalla</p>
+      <div id="area-puntero" class="oculto">
+        <p>Toca y arrastra aquí para mover el puntero</p>
+      </div>
+    </div>
+
+    <div id="popup-voz" class="oculto">
+      <p class="escuchando">Escuchando... 〰〰〰</p>
+      <p id="transcripcion">Di un comando...</p>
+      <div class="comandos-hint">
+        <span>"siguiente"</span>
+        <span>"anterior"</span>
+        <span>"portada"</span>
+        <span>"ir a diapositiva X"</span>
+        <span>"blackout"</span>
+        <span>"salir"</span>
+      </div>
+    </div>
+
+    <button id="btn-salir">Salir de la presentación</button>
+
+  </div>
+
+  <div id="toast"></div>
+
+  <script src="/socket.io/socket.io.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@mediapipe/hands/hands.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@mediapipe/camera_utils/camera_utils.js"></script>
+
+  <script src="js/estado.js"></script>
+  <script src="js/vibracion.js"></script>
+  <script src="js/socket.js"></script>
+
+  <script src="js/sensores.js"></script>
+  <script src="js/puntero.js"></script>
+  <script src="js/camara.js"></script>
+  <script src="js/voz.js"></script>
+  <script src="js/botones.js"></script>
+  
+  <script src="js/permisos.js"></script>
+  <script src="js/mando.js"></script>
+</body>
+</html>

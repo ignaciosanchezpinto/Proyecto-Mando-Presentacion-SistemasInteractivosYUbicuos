@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Google SIU - Presentaciones</title>
+  <link rel="stylesheet" href="css/dashboard.css">
+</head>
+<body>
+
+  <header class="google-header">
+    <div class="header-left">
+      <div class="menu-icon">☰</div>
+      <img src="https://www.gstatic.com/images/branding/product/1x/slides_2020q4_48dp.png" alt="Logo" class="logo-img">      <span class="logo-text">Presentaciones</span>
+    </div>
+    <div class="header-center">
+      <div class="search-bar">
+        <span class="search-icon">🔍</span>
+        <input type="text" placeholder="Buscar">
+      </div>
+    </div>
+    <div class="header-right">
+      <div class="user-icon" onclick="alert('Usuario funcionando')">N</div>
+    </div>
+  </header>
+
+  <main class="dashboard-content">
+    <section class="templates-section">
+      <div class="section-container">
+        <div class="section-header">
+          <span>Crear una presentación nueva</span>
+          <button class="btn-dots" onclick="alert('Galería de plantillas funcionando')">Galería de plantillas ↕</button>
+        </div>
+        <div class="template-grid">
+          <div class="template-card" onclick="alert('Crear en blanco funcionando')">
+            <div class="template-thumb plus-thumb">+</div>
+            <p>En blanco</p>
+          </div>
+          <div class="template-card" onclick="alert('Diseño 1 funcionando')">
+            <div class="template-thumb design-thumb"></div>
+            <p>Álbum de fotos</p>
+          </div>
+          <div class="template-card" onclick="alert('Diseño 2 funcionando')">
+            <div class="template-thumb design-thumb-2"></div>
+            <p>Boda</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="recent-section">
+      <div class="section-container">
+        <div class="section-header">
+          <span>Presentaciones recientes</span>
+        </div>
+        
+        <div class="presentation-list">
+          <a href="/presentacion" class="presentation-item">
+            <div class="item-left">
+              <img src="https://www.gstatic.com/images/branding/product/1x/slides_2020q4_32dp.png" alt="icon" class="item-icon">
+              <div class="item-info">
+                <span class="item-title">Presentación TFG - P2 (Sistemas Ubicuos)</span>
+                <span class="item-date">Abierto ayer</span>
+              </div>
+            </div>
+            <div class="item-right">
+              <span>Propietario</span>
+              <span class="dots-vertical">⋮</span>
+            </div>
+          </a>
+
+          <div class="presentation-item disabled" onclick="alert('Funcionando')">
+            <div class="item-left">
+              <img src="https://www.gstatic.com/images/branding/product/1x/slides_2020q4_32dp.png" alt="icon" class="item-icon">
+              <div class="item-info">
+                <span class="item-title">Ejemplo de Diseño - Computación</span>
+                <span class="item-date">Abierto hace 3 días</span>
+              </div>
+            </div>
+            <div class="item-right">
+              <span>Invitado</span>
+              <span class="dots-vertical">⋮</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <a href="/mando" class="fab-mando" title="Abrir Mando Móvil">
+    📱
+  </a>
+
+</body>
+</html>
